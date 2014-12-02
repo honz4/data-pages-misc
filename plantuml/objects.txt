@@ -1,0 +1,75 @@
+======Object Diagram======
+To be able to generate those diagrams, you must have Graphviz_software
+installed on your machine in the default directory c:\Program
+Files\GraphvizX.XX or /usr/bin/dot.
+You can have_a_look_here_if_you_have_installed_Graphviz_somewhere_else.
+The description of object diagram is similar to the description of class
+diagram.
+======New rendering======
+This page show the rendering given by the new Svek_architecture.
+Note that you can disable the shadowing using the skinparam shadowing false command.
+======Definition of objects======
+You define instance of objects using the object keywords.
+<uml t="objects" >
+object firstObject
+object "My Second Object" as o2
+</uml>
+		
+[imgp/objects.png]
+======Relations between objects======
+Relations between objects are defined using the following symbols :
+
+^relation   ^notation ^picture ^
+|Extension  |<|--|[img/extends01.png]|
+|Composition|*-- |[img/sym03.png]    |
+|Aggregation|o-- |[img/sym01.png]    |
+It is possible to replace -- by .. to have a dotted line.
+Knowing those rules, it is possible to draw the following drawings.
+It is possible a add a label on the relation, using " : ", followed by the text
+of the label.
+For cardinality, you can use double-quotes "" on each side of the relation.
+<uml t="objects2" >
+object Object01
+object Object02
+object Object03
+object Object04
+object Object05
+object Object06
+object Object07
+object Object08
+
+Object01 <|-- Object02
+Object03 *-- Object04
+Object05 o-- "4" Object06
+Object07 .. Object08 : some labels
+</uml>
+		
+[imgp/objects_001.png]
+======Adding fields======
+To declare fields, you can use the symbol ":" followed by the field's name.
+<uml t="objects_002">
+
+object user
+
+user : name = "Dummy"
+user : id = 123
+
+</uml>
+		
+It is also possible to ground between brackets {} all fields.
+<uml t="objects_003">
+
+object user {
+  name = "Dummy"
+  id = 123
+}
+
+</uml>
+		
+======Common features with class diagrams======
+    * Visibility
+    * Defines_notes
+    * Use_packages
+    * Title_the_diagram
+    * Skin_the_output
+    * Split_the_image

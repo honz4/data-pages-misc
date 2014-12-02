@@ -1,0 +1,234 @@
+======Use Case Diagram======
+To be able to generate those diagrams, you must have Graphviz_software
+installed on your machine in the default directory c:\Program
+Files\GraphvizX.XX or /usr/bin/dot.
+You can have_a_look_here_if_you_have_installed_Graphviz_somewhere_else.
+Let's have a fews examples :
+Note that you can disable the shadowing using the skinparam shadowing false
+command.
+======Usecases======
+Use cases are enclosed using between parentheses (because two parentheses looks
+like an oval).
+You can also use the usecase keyword to define a usecase. And you can define an
+alias, using the as keyword. This alias will be used latter, when defining
+relations.
+<uml t="usecase">
+
+(First usecase)
+(Another usecase) as (UC2)
+usecase UC3
+usecase (Last\nusecase) as UC4
+
+</uml>
+		
+======Actors======
+Actor are enclosed using between two points.
+You can also use the actor keyword to define an actor. And you can define an
+alias, using the as keyword. This alias will be used latter, when defining
+relations.
+We will see later that the actor definitions are optional.
+<uml t="usecase_001">
+
+:First Actor:
+:Another\nactor: as Men2
+actor Men3
+actor :Last actor: as Men4
+
+</uml>
+		
+======Usecases description======
+If you want to have description on several lines, you can use quotes.
+You can also use the following separators: -- .. == __. And you can put titles
+within the separators.
+<uml t="usecase_002">
+
+usecase UC1 as "You can use
+several lines to define your usecase.
+You can also use separators.
+--
+Several separators are possible.
+==
+And you can add titles:
+..Conclusion..
+This allows large description."
+
+</uml>
+		
+======Basic example======
+To link actors and use cases, the arrow --> is used.
+The more dashes "-" in the arrow, the longer the arrow. You can add a label on
+the arrow, by adding a ":" character in the arrow definition.
+In this example, you see that User has not been defined before, and is used as
+an actor.
+<uml t="usecase_003">
+
+User -> (Start)
+User --> (Use the application) : A small label
+
+:Main Admin: ---> (Use the application) : This is\nyet another\nlabel
+</uml>
+		
+======Extension======
+If one actor/use case extends another one, you can use the symbol <|-- (which
+stands for [img/extends01.png]).
+<uml t="usecase_004">
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User <|-- Admin
+(Start) <|-- (Use)
+
+</uml>
+		
+======Using notes======
+You can use the note left of , note right of , note top of , note bottom of
+keywords to define notes related to a single object.
+A note can be also define alone with the note keywords, then linked to other
+objects using the .. symbol.
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User -> (Start)
+User --> (Use)
+
+Admin ---> (Use)
+
+note right of Admin : This is an example.
+
+note right of (Use)
+  A note can also
+  be on several lines
+end note
+
+note "This note is connected\nto several objects." as N2
+(Start) .. N2
+N2 .. (Use)
+</uml>
+		
+[imgp/usecase_005.png]
+======Stereotypes======
+You can add stereotypes while defining actors and use cases using " << " and "
+>> ".
+<uml t="usecase_006">
+User << Human >>
+:Main Database: as MySql << Application >>
+(Start) << One Shot >>
+(Use the application) as (Use) << Main >>
+
+User -> (Start)
+User --> (Use)
+
+MySql --> (Use)
+
+</uml>
+		
+======Changing arrows direction======
+By default, links between classes have two dashes -- and are vertically
+oriented. It is possible to use horizontal link by putting a single dash (or
+dot) like this:
+<uml t="usecase_007">
+:user: --> (Use case 1)
+:user: -> (Use case 2)
+</uml>
+You can also change directions by reversing the link:
+<uml t="usecase_008">
+(Use case 1) <.. :user:
+(Use case 2) <- :user:
+</uml>
+It is also possible to change arrow direction by adding left, right, up or down
+keywords inside the arrow:
+<uml t="usecase_009">
+:user: -left-> (dummyLeft)
+:user: -right-> (dummyRight)
+:user: -up-> (dummyUp)
+:user: -down-> (dummyDown)
+</uml>
+You can shorten the arrow by using only the first character of the direction
+(for example, -d- instead of -down-) or the two first characters (-do-).
+Please note that you should not abuse this functionality : Graphviz gives
+usually good results without tweaking.
+======Title the diagram======
+The title keywords is used to put a title.
+You can use title and end title keywords for a longer title, as in sequence
+diagrams.
+<uml t="usecase_010">
+title Simple <b>Usecase</b>\nwith one actor
+
+"Use the application" as (Use)
+User -> (Use)
+
+</uml>
+======Splitting diagrams======
+The newpage keywords to split your diagram into several pages or images.
+<uml t="usecase_011_001">
+:actor1: --> (Usecase1)
+newpage
+:actor2: --> (Usecase2)
+</uml>
+======Left to right direction======
+The general default behavior when building diagram is top to bottom.
+<uml t="usecase_012">
+'default
+top to bottom direction
+user1 --> (Usecase 1)
+user2 --> (Usecase 2)
+
+</uml>
+You may change to left to right using the left to right direction command. The
+result is often better with this direction.
+<uml t="usecase_013">
+
+left to right direction
+user1 --> (Usecase 1)
+user2 --> (Usecase 2)
+
+</uml>
+======Skinparam======
+You can use the skinparam command to change colors and fonts for the drawing.
+You can use this command :
+    * In the diagram definition, like any other commands,
+    * In an included_file,
+    * In a configuration file, provided in the command_line or the ANT_task.
+You can define specific color and fonts for stereotyped actors and usecases.
+<uml t="usecase_014">
+
+skinparam usecase {
+	BackgroundColor DarkSeaGreen
+	BorderColor DarkSlateGray
+
+	BackgroundColor<< Main >> YellowGreen
+	BorderColor<< Main >> YellowGreen
+	
+	ArrowColor Olive
+	ActorBorderColor black
+	ActorFontName Courier
+
+	ActorBackgroundColor<< Human >> Gold
+}
+
+User << Human >>
+:Main Database: as MySql << Application >>
+(Start) << One Shot >>
+(Use the application) as (Use) << Main >>
+
+User -> (Start)
+User --> (Use)
+
+MySql --> (Use)
+
+</uml>
+		
+======Complete example======
+<uml t="usecase_015">
+left to right direction
+skinparam packageStyle rect
+actor customer
+actor clerk
+rectangle checkout {
+  customer -- (checkout)
+  (checkout) .> (payment) : include
+  (help) .> (checkout) : extends
+  (checkout) -- clerk
+}
+</uml>

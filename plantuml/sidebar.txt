@@ -1,0 +1,8 @@
+  * [[sequence]]
+  * [[usecase]]
+  * [[classes]]
+  * [[activity]]
+  * [[activity2]]
+  * [[component]]
+  * [[state]]
+  * [[objects]]
