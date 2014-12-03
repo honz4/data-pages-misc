@@ -1,0 +1,216 @@
+======Salt======
+Salt is a subproject included in PlantUML that may help you to design graphical interface.
+
+You can use either @startsalt keyword, or @startuml followed by a line with
+salt keyword.
+======Basic widgets======
+A window must start and end with brackets. You can then define:
+    * Button using [ and ].
+    * Radio button using ( and ).
+    * Checkbox using [ and ].
+    * User text area using "
+<uml t="salt">
+salt
+{
+  Just plain text
+  [This is my button]
+  ()  Unchecked radio
+  (X) Checked radio
+  []  Unchecked box
+  [X] Checked box
+  "Enter text here   "
+  ^This is a droplist^
+}
+</uml>
+
+The goal of this tool is to discuss about simple and sample windows.
+======Using grid======
+A table is automatically created when you use an opening bracket {.
+And you have to use | to separate columns.
+For example:
+<uml t="salt001">
+salt
+{
+  Login    | "MyName   "
+  Password | "****     "
+  [Cancel] | [  OK   ]
+}
+</uml>
+
+Just after the opening bracket, you can use a character to define if you want
+to draw lines or columns of the grid :
+
+^character^lines ^
+|#|To_display_all_vertical_and_horizontal_lines|
+|!|To_display_all_vertical_lines               |
+|-|To_display_all_horizontal_lines             |
+|+|To_display_external_lines                   |
+<uml t="salt002">
+salt
+{+
+  Login    | "MyName   "
+  Password | "****     "
+  [Cancel] | [  OK   ]
+}
+</uml>
+
+======Using separator======
+You can use several horizontal lines as separator.
+
+<uml t="salt003">
+salt
+{
+  Text1
+  ..
+  "Some field"
+  ==
+  Note on usage
+  ~~
+  Another text
+  --
+  [Ok]
+}
+</uml>
+
+======Tree widget======
+To have a Tree, you have to start with {T and to use + to denote hierarchy.
+
+<uml t="salt004">
+salt
+{
+{T
+ + World
+ ++ America
+ +++ Canada
+ +++ USA
+ ++++ New York
+ ++++ Boston
+ +++ Mexico
+ ++ Europe
+ +++ Italy
+ +++ Germany
+ ++++ Berlin
+ ++ Africa
+}
+}
+</uml>
+
+======Enclosing brackets======
+You can define subelements by opening a new opening bracket.
+
+<uml t="slat005">
+salt
+{
+Name         | "                 "
+Modifiers:   | { (X) public | () default | () private | ()
+protected
+                [] abstract | [] final   | [] static }
+Superclass:  | { "java.lang.Object " | [Browse...] }
+}
+</uml>
+
+======Adding tabs======
+You can add tabs using {/ notation. Note that you can use HTML code to have bold text.
+
+<uml t="salt006">
+salt
+{+
+{/ <b>General | Fullscreen | Behavior | Saving }
+{
+	{ Open image in: | ^Smart Mode^ }
+	[X] Smooth images when zoomed
+	[X] Confirm image deletion
+	[ ] Show hidden images
+}
+[Close]
+}
+</uml>
+
+Tab could also be vertically oriented:
+
+<uml t="salt007">
+salt
+{+
+{/ <b>General
+Fullscreen
+Behavior
+Saving } |
+{
+	{ Open image in: | ^Smart Mode^ }
+	[X] Smooth images when zoomed
+	[X] Confirm image deletion
+	[ ] Show hidden images
+	[Close]
+}
+}
+</uml>
+
+======Using menu======
+You can add a menu by using {* notation.
+
+<uml t="salt008">
+salt
+{+
+{* File | Edit | Source | Refactor }
+{/ General | Fullscreen | Behavior | Saving }
+{
+	{ Open image in: | ^Smart Mode^ }
+	[X] Smooth images when zoomed
+	[X] Confirm image deletion
+	[ ] Show hidden images
+}
+[Close]
+}
+</uml>
+
+It is also possible to open a menu:
+
+<uml t="salt_menu_open">
+salt
+{+
+{* File | Edit | Source | Refactor
+ Refactor | New | Open File | - | Close | Close All }
+{/ General | Fullscreen | Behavior | Saving }
+{
+	{ Open image in: | ^Smart Mode^ }
+	[X] Smooth images when zoomed
+	[X] Confirm image deletion
+	[ ] Show hidden images
+}
+[Close]
+}
+</uml>
+
+======Advanced table======
+You can use two special notations for table :
+    * * to indicate that a cell with span with left
+    * . to denotate an empty cell
+<uml t="salt_table">
+salt
+{#
+. | Column 2 | Column 3
+Row header 1 | value 1 | value 2
+Row header 2 | A long cell | *
+}
+</uml>
+
+======OpenIconic======
+OpenIconic is an very nice open source icon set. Those icons have been
+integrated into the creole_parser, so you can use them out-of-the-box.
+You can use the following syntax: **%%<&ICON_NAME>%%**.
+
+<uml t="openiconic">
+salt
+{
+  Login<&person> | "MyName   "
+  Password<&key> | "****     "
+  [Cancel <&circle-x>] | [OK <&account-login>]
+}
+</uml>
+
+The complete list is available on [[http://useiconic.com/open|OpenIconic Website]], or you can use the
+following special diagram:
+
+<uml t="salt_listopeniconic">
+listopeniconic
+</uml>

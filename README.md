@@ -6,4 +6,4 @@ ruzne studijni materialy, pdf, odkazy
 
 
 # ./plantuml
-[plantuml](http://plant.com) dokuwikized docs for [dokuwiki_plantuml](https://github.com/honz4/dokuwiki_plantuml) plugin.
+[plantuml](http://plantuml.com) dokuwikized docs for [dokuwiki_plantuml](https://github.com/honz4/dokuwiki_plantuml) plugin.

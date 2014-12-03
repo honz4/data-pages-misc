@@ -1,0 +1,335 @@
+======Skinparam command======
+You can change colors and font of the drawing using the skinparam command.
+Example:
+  * skinparam backgroundColor transparent
+======Usage======
+You can use this command :
+  * In the diagram definition, like any other commands,
+  * In an included_file,
+  * In a configuration file, provided in the command_line or the ANT_task.
+======Nested======
+To avoid repetition, it is possible to nest definition. So the following
+definition :
+      skinparam xxxxParam1 value1
+      skinparam xxxxParam2 value2
+      skinparam xxxxParam3 value3
+      skinparam xxxxParam4 value4
+      		
+is strictly equivalent to:
+      skinparam xxxx {
+        Param1 value1
+        Param2 value2
+        Param3 value3
+        Param4 value4
+      }
+
+======List======
+Since the documentation is not always up to date, you can have the complete
+list of parameters using this command:
+      java -jar plantuml.jar -language
+======Colors======
+You can use either standard_color_name or RGB code.
+transparent can only be used for background of the image.
+
+^Parameter name                    ^Default value^Color^Comment               ^
+|backgroundColor                   |white        |     |Background of the     |
+|                                  |             |     |page, or transparent  |
+|activityArrowColor                |#A80036      |     |Color of arrows in    |
+|                                  |             |     |activity diagrams     |
+|activityBackgroundColor           |#FEFECE      |     |Background of         |
+|                                  |             |     |activities            |
+|activityBorderColor               |#A80036      |     |Color of activity     |
+|                                  |             |     |borders               |
+|activityStartColor                |black        |     |Starting circle in    |
+|                                  |             |     |activity diagrams     |
+|activityEndColor                  |black        |     |Ending circle in      |
+|                                  |             |     |activity diagrams     |
+|activityBarColor                  |black        |     |Synchronization bar in|
+|                                  |             |     |activity diagrams     |
+|usecaseArrowColor                 |#A80036      |     |Color of arrows in    |
+|                                  |             |     |usecase diagrams      |
+|usecaseActorBackgroundColor       |#FEFECE      |     |Head's color of actor |
+|                                  |             |     |in usecase diagrams   |
+|usecaseActorBorderColor           |#A80036      |     |Color of actor borders|
+|                                  |             |     |in usecase diagrams   |
+|usecaseBackgroundColor            |#FEFECE      |     |Background of usecases|
+|                                  |             |     |Color of usecase      |
+|usecaseBorderColor                |#A80036      |     |borders in usecase    |
+|                                  |             |     |diagrams              |
+|classArrowColor                   |#A80036      |     |Color of arrows in    |
+|                                  |             |     |class diagrams        |
+|                                  |             |     |Background of classes/|
+|classBackgroundColor              |#FEFECE      |     |interface/enum in     |
+|                                  |             |     |class diagrams        |
+|                                  |             |     |Borders of classes/   |
+|classBorderColor                  |#A80036      |     |interface/enum in     |
+|                                  |             |     |class diagrams        |
+|objectArrowColor                  |#A80036      |     |Color of arrows in    |
+|                                  |             |     |object diagrams       |
+|objectBackgroundColor             |#FEFECE      |     |Background of object  |
+|                                  |             |     |in object diagrams    |
+|objectBorderColor                 |#A80036      |     |Borders of object in  |
+|                                  |             |     |object diagrams       |
+|packageBackgroundColor            |#FEFECE      |     |Background of packages|
+|                                  |             |     |in class diagrams     |
+|packageBorderColor                |#A80036      |     |Borders of packages in|
+|                                  |             |     |class diagrams        |
+|                                  |             |     |Background of class   |
+|stereotypeCBackgroundColor        |#ADD1B2      |     |spots in class        |
+|                                  |             |     |diagrams              |
+|                                  |             |     |Background of abstract|
+|stereotypeABackgroundColor        |#A9DCDF      |     |class spots in class  |
+|                                  |             |     |diagrams              |
+|                                  |             |     |Background of         |
+|stereotypeIBackgroundColor        |#B4A7E5      |     |interface spots in    |
+|                                  |             |     |class diagrams        |
+|                                  |             |     |Background of enum    |
+|stereotypeEBackgroundColor        |#EB937F      |     |spots in class        |
+|                                  |             |     |diagrams              |
+|componentArrowColor               |#A80036      |     |Color of arrows in    |
+|                                  |             |     |component diagrams    |
+|componentBackgroundColor          |#FEFECE      |     |Background of         |
+|                                  |             |     |components            |
+|componentBorderColor              |#A80036      |     |Borders of components |
+|                                  |             |     |Background of         |
+|componentInterfaceBackgroundColor |#FEFECE      |     |interface in component|
+|                                  |             |     |diagrams              |
+|componentInterfaceBorderColor     |#A80036      |     |Border of interface in|
+|                                  |             |     |component diagrams    |
+|noteBackgroundColor               |#FBFB77      |     |Background of notes   |
+|noteBorderColor                   |#A80036      |     |Border of notes       |
+|stateBackgroundColor              |#FEFECE      |     |Background of states  |
+|                                  |             |     |in state diagrams     |
+|stateBorderColor                  |#A80036      |     |Border of states in   |
+|                                  |             |     |state diagrams        |
+|stateArrowColor                   |#A80036      |     |Colors of arrows in   |
+|                                  |             |     |state diagrams        |
+|stateStartColor                   |black        |     |Starting circle in    |
+|                                  |             |     |state diagrams        |
+|stateEndColor                     |black        |     |Ending circle in state|
+|                                  |             |     |diagrams              |
+|sequenceArrowColor                |#A80036      |     |Color of arrows in    |
+|                                  |             |     |sequence diagrams     |
+|sequenceActorBackgroundColor      |#FEFECE      |     |Head's color of actor |
+|                                  |             |     |in sequence diagrams  |
+|sequenceActorBorderColor          |#A80036      |     |Border of actor in    |
+|                                  |             |     |sequence diagrams     |
+|sequenceDividerBackgroundColor    |#EEEEEE      |     |Background of divider |
+|                                  |             |     |in sequence diagrams  |
+|                                  |             |     |Header color of alt/  |
+|sequenceGroupBackgroundColor      |#EEEEEE      |     |opt/loop in sequence  |
+|                                  |             |     |diagrams              |
+|                                  |             |     |Background of life    |
+|sequenceLifeLineBackgroundColor   |white        |     |line in sequence      |
+|                                  |             |     |diagrams              |
+|sequenceLifeLineBorderColor       |#A80036      |     |Border of life line in|
+|                                  |             |     |sequence diagrams     |
+|                                  |             |     |Background of         |
+|sequenceParticipantBackgroundColor|#FEFECE      |     |participant in        |
+|                                  |             |     |sequence diagrams     |
+|sequenceParticipantBorderColor    |#A80036      |     |Border of participant |
+|                                  |             |     |in sequence diagrams  |
+|                                  |             |     |Border of participant |
+|sequenceBoxLineColor              |#A80036      |     |englobers in sequence |
+|                                  |             |     |diagrams              |
+|                                  |             |     |Background of         |
+|sequenceBoxBackgroundColor        |#DDDDDD      |     |participant englobers |
+|                                  |             |     |in sequence diagrams  |
+
+======Font color, name and size======
+You can change the font for the drawing using xxxFontColor, xxxFontSize and xxxFontName parameters.
+Example:
+      skinparam classFontColor red
+      skinparam classFontSize 10
+      skinparam classFontName Aapex
+You can also change the default font for all fonts using skinparam defaultFontName.
+Example:
+      skinparam defaultFontName Aapex
+Please note the fontname is highly system dependent, so do not over use it,
+if you look for portability. Helvetica and Courier should be available on all system.
+
+^Param name                     ^Default value^Comment                        ^
+|activityFontColor              |black        |                               |
+|activityFontSize               |14           |Used for activity box          |
+|activityFontStyle              |plain        |                               |
+|activityFontName               |             |                               |
+|activityArrowFontColor         |black        |                               |
+|activityArrowFontSize          |13           |Used for text on arrows in     |
+|activityArrowFontStyle         |plain        |activity diagrams              |
+|activityArrowFontName          |             |                               |
+|circledCharacterFontColor      |black        |                               |
+|circledCharacterFontSize       |17           |Used for text in circle for    |
+|circledCharacterFontStyle      |bold         |class, enum & others           |
+|circledCharacterFontName       |Courier      |                               |
+|circledCharacterRadius         |11           |                               |
+|classArrowFontColor            |black        |                               |
+|classArrowFontSize             |10           |Used for text on arrows in     |
+|classArrowFontStyle            |plain        |class diagrams                 |
+|classArrowFontName             |             |                               |
+|classAttributeFontColor        |black        |                               |
+|classAttributeFontSize         |10           |                               |
+|classAttributeIconSize         |10           |Class attributes and methods   |
+|classAttributeFontStyle        |plain        |                               |
+|classAttributeFontName         |             |                               |
+|classFontColor                 |black        |                               |
+|classFontSize                  |12           |Used for classes name          |
+|classFontStyle                 |plain        |                               |
+|classFontName                  |             |                               |
+|classStereotypeFontColor       |black        |                               |
+|classStereotypeFontSize        |12           |Used for stereotype in classes |
+|classStereotypeFontStyle       |italic       |                               |
+|classStereotypeFontName        |             |                               |
+|objectArrowFontColor           |black        |                               |
+|objectArrowFontSize            |10           |Used for text on arrows in     |
+|objectArrowFontStyle           |plain        |object diagrams                |
+|objectArrowFontName            |             |                               |
+|objectAttributeFontColor       |black        |                               |
+|objectAttributeFontSize        |10           |Object attributes              |
+|objectAttributeFontStyle       |plain        |                               |
+|objectAttributeFontName        |             |                               |
+|objectFontColor                |black        |                               |
+|objectFontSize                 |12           |Used for object name           |
+|objectFontStyle                |plain        |                               |
+|objectFontName                 |             |                               |
+|objectStereotypeFontColor      |black        |                               |
+|objectStereotypeFontSize       |12           |Used for stereotype in objects |
+|objectStereotypeFontStyle      |italic       |                               |
+|objectStereotypeFontName       |             |                               |
+|componentFontColor             |black        |                               |
+|componentFontSize              |14           |Used for components name       |
+|componentFontStyle             |plain        |                               |
+|componentFontName              |             |                               |
+|componentStereotypeFontColor   |black        |                               |
+|componentStereotypeFontSize    |14           |Used for stereotype in         |
+|componentStereotypeFontStyle   |italic       |components                     |
+|componentStereotypeFontName    |             |                               |
+|componentArrowFontColor        |black        |                               |
+|componentArrowFontSize         |13           |Used for text on arrows in     |
+|componentArrowFontStyle        |plain        |component diagrams             |
+|componentArrowFontName         |             |                               |
+|noteFontColor                  |black        |                               |
+|noteFontSize                   |13           |Used for notes in all diagrams |
+|noteFontStyle                  |plain        |but sequence diagrams          |
+|noteFontName                   |             |                               |
+|packageFontColor               |black        |                               |
+|packageFontSize                |14           |Used for package and partition |
+|packageFontStyle               |plain        |names                          |
+|packageFontName                |             |                               |
+|sequenceActorFontColor         |black        |                               |
+|sequenceActorFontSize          |13           |Used for actor in sequence     |
+|sequenceActorFontStyle         |plain        |diagrams                       |
+|sequenceActorFontName          |             |                               |
+|sequenceDividerFontColor       |black        |                               |
+|sequenceDividerFontSize        |13           |Used for text on dividers in   |
+|sequenceDividerFontStyle       |bold         |sequence diagrams              |
+|sequenceDividerFontName        |             |                               |
+|sequenceArrowFontColor         |black        |                               |
+|sequenceArrowFontSize          |13           |Used for text on arrows in     |
+|sequenceArrowFontStyle         |plain        |sequence diagrams              |
+|sequenceArrowFontName          |             |                               |
+|sequenceGroupFontColor         |black        |                               |
+|sequenceGroupFontSize          |11           |Used for text for "else" in    |
+|sequenceGroupFontStyle         |bold         |sequence diagrams              |
+|sequenceGroupFontName          |             |                               |
+|sequenceGroupHeaderFontColor   |black        |Used for text for "alt/opt/    |
+|sequenceGroupHeaderFontSize    |13           |loop" headers in sequence      |
+|sequenceGroupHeaderFontStyle   |bold         |diagrams                       |
+|sequenceGroupHeaderFontName    |             |                               |
+|sequenceParticipantFontColor   |black        |                               |
+|sequenceParticipantFontSize    |13           |Used for text on participant in|
+|sequenceParticipantFontStyle   |plain        |sequence diagrams              |
+|sequenceParticipantFontName    |             |                               |
+|sequenceTitleFontColor         |black        |                               |
+|sequenceTitleFontSize          |13           |Used for titles in sequence    |
+|sequenceTitleFontStyle         |bold         |diagrams                       |
+|sequenceTitleFontName          |             |                               |
+|titleFontColor                 |black        |                               |
+|titleFontSize                  |18           |Used for titles in all diagrams|
+|titleFontStyle                 |plain        |but sequence diagrams          |
+|titleFontName                  |             |                               |
+|stateFontColor                 |black        |                               |
+|stateFontSize                  |14           |Used for states in state       |
+|stateFontStyle                 |plain        |diagrams                       |
+|stateFontName                  |             |                               |
+|stateArrowFontColor            |black        |                               |
+|stateArrowFontSize             |13           |Used for text on arrows in     |
+|stateArrowFontStyle            |plain        |state diagrams                 |
+|stateArrowFontName             |             |                               |
+|stateAttributeFontColor        |black        |                               |
+|stateAttributeFontSize         |12           |Used for states description in |
+|stateAttributeFontStyle        |plain        |state diagrams                 |
+|stateAttributeFontName         |             |                               |
+|usecaseFontColor               |black        |                               |
+|usecaseFontSize                |14           |Used for usecase labels in     |
+|usecaseFontStyle               |plain        |usecase diagrams               |
+|usecaseFontName                |             |                               |
+|usecaseStereotypeFontColor     |black        |                               |
+|usecaseStereotypeFontSize      |14           |Used for stereotype in usecase |
+|usecaseStereotypeFontStyle     |italic       |                               |
+|usecaseStereotypeFontName      |             |                               |
+|usecaseActorFontColor          |black        |                               |
+|usecaseActorFontSize           |14           |Used for actor labels in       |
+|usecaseActorFontStyle          |plain        |usecase diagrams               |
+|usecaseActorFontName           |             |                               |
+|usecaseActorStereotypeFontColor|black        |                               |
+|usecaseActorStereotypeFontSize |14           |                               |
+|usecaseActorStereotypeFontStyle|italic       |Used for stereotype for actor  |
+|                               |             |                               |
+|usecaseActorStereotypeFontName |             |                               |
+|usecaseArrowFontColor          |black        |                               |
+|usecaseArrowFontSize           |13           |Used for text on arrows in     |
+|usecaseArrowFontStyle          |plain        |usecase diagrams               |
+|usecaseArrowFontName           |             |                               |
+|footerFontColor                |black        |                               |
+|footerFontSize                 |10           |Used for footer                |
+|footerFontStyle                |plain        |                               |
+|footerFontName                 |             |                               |
+|headerFontColor                |black        |                               |
+|headerFontSize                 |10           |Used for header                |
+|headerFontStyle                |plain        |                               |
+|headerFontName                 |             |                               |
+
+======Text Alignement======
+Text alignement can be set up to left, right or center.
+
+^Param name            ^Default value^Comment                                 ^
+|sequenceMessageAlign  |left         |Used for messages in sequence diagrams  |
+|sequenceReferenceAlign|center       |Used for "ref over" in sequence diagrams|
+
+<uml t="skinparam">
+skinparam sequenceMessageAlign center
+Alice -> Bob : Hi
+Alice -> Bob : This is very long
+</uml>
+
+======Black and White======
+You can force the use of a black&white output using the skinparam monochrome true command.
+
+<uml t="skinparam_001">
+skinparam monochrome true
+
+actor User
+participant "First Class" as A
+participant "Second Class" as B
+participant "Last Class" as C
+
+User -> A: DoWork
+activate A
+
+A -> B: Create Request
+activate B
+
+B -> C: DoWork
+activate C
+C --> B: WorkDone
+destroy C
+
+B --> A: Request Created
+deactivate B
+
+A --> User: Done
+deactivate A
+</uml>
+
+======Examples======
+You can click on image to view the sources.

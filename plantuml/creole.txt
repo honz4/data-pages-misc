@@ -1,0 +1,127 @@
+======Creole======
+A light Creole_engine have been integrated into PlantUML to have a standardized
+way of defining text style.
+All diagrams are now supporting this syntax.
+(Note that ascending compatibility with HTML syntax is preserved)
+======Emphasized text======
+<uml t="creole">
+Alice -> Bob : hello --there--
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+  This is **bold**
+  This is //italics//
+  This is ""monospaced""
+  This is --stroked--
+  This is __underlined__
+  This is ~~waved~~
+end note
+</uml>
+======List======
+<uml t="creole_001">
+object demo {
+  * Bullet list
+  * Second item
+  ** Sub item
+}
+
+legend
+  # Numbered list
+  # Second item
+  ## Sub item
+  ## Another sub item
+  # Third item
+end legend
+</uml>
+======Escape character======
+You can use the tilde ~ to escape special creole characters.
+<uml t="creole_002">
+object demo {
+  This is not ~___underscored__.
+  This is not ~""monospaced"".
+}
+</uml>
+======Horizontal lines======
+<uml t="creole_003">
+database DB1 as "
+You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+Enjoy!
+"
+note right
+  This is working also in notes
+  You can also add title in all these lines
+  ==Title==
+  --Another title--
+end note
+
+</uml>
+======Headings======
+<uml t="creole_004">
+usecase UC1 as "
+= Extra-large heading
+Some text
+== Large heading
+Other text
+=== Medium heading
+Information
+....
+==== Small heading"
+</uml>
+======Legacy HTML======
+Some HTML tags are also working:
+    * <b> for bold text
+    * <u> or <u:#AAAAAA> or <u:colorName> for underline
+    * <i> for italic
+    * <s> or <s:#AAAAAA> or <s:colorName> for strike text
+    * <w> or <w:#AAAAAA> or <w:colorName> for wave underline text
+    * <color:#AAAAAA> or <color:colorName>
+    * <back:#AAAAAA> or <back:colorName> for background color
+    * <size:nn> to change font size
+    * <img:file> : the file must be accessible by the filesystem
+    * <img:http://url> : the URL must be available from the Internet
+<uml t="creole_005">
+:* You can change <color:red>text color</color>
+* You can change <back:cadetblue>background color</back>
+* You can change <size:18>size</size>
+* You use <u>legacy</u> <b>HTML <i>tag</i></b>
+* You use <u:red>color</u> <s:green>in HTML</s> <w:
+#0000FF>tag</w>
+----
+* Use image : <img:sourceforge.jpg>
+;
+
+</uml>
+======Table======
+<uml t="creole_006">
+skinparam titleFontSize 14
+title
+  Example of simple table
+  |= |= table |= header |
+  | a | table | row |
+  | b | table | row |
+end title
+[*] --> State1
+</uml>
+======OpenIconic======
+OpenIconic is an very nice open source icon set. Those icons have been
+integrated into the creole parser, so you can use them out-of-the-box.
+You can use the following syntax: <&amp;ICON_NAME>.
+<uml t="creole_007">
+title: <size:20><&heart>Use of OpenIconic<&heart></size>
+class Wifi
+note left
+  Click on <&wifi>
+end note
+</uml>
+The complete list is available on OpenIconic_Website, or you can use the
+following special diagram:
+<uml t="creole_008">
+listopeniconic
+</uml>

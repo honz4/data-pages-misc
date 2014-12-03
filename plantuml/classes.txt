@@ -19,6 +19,7 @@ Relations between classes are defined using the following symbols :
 
 It is possible to replace -- by .. to have a dotted line.
 Knowing those rules, it is possible to draw the following drawings:
+
 <uml t="classes">
 scale 800 width
 Class01 <|-- Class02
@@ -32,22 +33,20 @@ Class15 ..> Class16
 Class17 ..|> Class18
 Class19 <--* Class20
 </uml>
-		
-[imgp/classes.png]
+
 ======Label on relations======
 It is possible a add a label on the relation, using ":", followed by the text
 of the label.
 For cardinality, you can use double-quotes "" on each side of the relation.
-<uml t="classes_001">
 
+<uml t="classes_001">
 Class01 "1" *-- "many" Class02 : contains
 
 Class03 o-- Class04 : aggregation
 
 Class05 --> "1" Class06
-
 </uml>
-		
+
 You can add an extra arrow pointing at one object showing which object acts on
 the other object, using < or > at the begin or at the end of the label.
 <uml t="classes_002">
@@ -58,22 +57,23 @@ Car *- Wheel : have 4 >
 Car -- Person : < owns
 
 </uml>
-		
+
 ======Adding methods======
 To declare fields and methods, you can use the symbol ":" followed by the
 field's or method's name.
 The system checks for parenthesis to choose between methods and fields.
+
 <uml t="classes_003">
 Object <|-- ArrayList
 
 Object : equals()
 ArrayList : Object[] elementData
 ArrayList : size()
-
 </uml>
-		
+
 It is also possible to group between brackets {} all fields and methods.
 Note that the syntax is highly flexible about type/name order.
+
 <uml t="classes_004">
 class Dummy {
   String data
@@ -85,30 +85,29 @@ class Flight {
    departureTime : Date
 }
 </uml>
-		
+
 ======Defining visibility======
 When you define methods or fields, you can use characters to define the
 visibility of the corresponding item:
- _____________________________________________________________________________
-|Character|_________Icon_for_field____|_________Icon_for_method____|Visibility|
-|______-__|______[PRIVATE_FIELD.png]__|______[PRIVATE_METHOD.png]__|private___|
-|______#__|____[PROTECTED_FIELD.png]__|____[PROTECTED_METHOD.png]__|protected_|
-|      ~  |[PACKAGE_PRIVATE_FIELD.png]|[PACKAGE_PRIVATE_METHOD.png]|package   |
-|_________|___________________________|____________________________|private___|
-|______+__|______[PUBLIC_FIELD.png]___|______[PUBLIC_METHOD.png]___|public____|
-<uml t="classes_005">
 
+^Character^         Icon_for_field    ^         Icon_for_method    ^Visibility^
+|      -  |      [PRIVATE FIELD.png]  |      [PRIVATE METHOD.png]  |private   |
+|      #  |    [PROTECTED FIELD.png]  |    [PROTECTED METHOD.png]  |protected |
+|      ~  |[PACKAGE_PRIVATE_FIELD.png]|[PACKAGE_PRIVATE_METHOD.png]|package   |
+|         |                           |                            |private   |
+|      +  |      [PUBLIC FIELD.png]   |      [PUBLIC METHOD.png]   |public    |
+
+<uml t="classes_005">
 class Dummy {
  -field1
  #field2
  ~method1()
  +method2()
 }
-
 </uml>
-		
-You can turn off this feature using the skinparam classAttributeIconSize 0
-command :
+
+You can turn off this feature using the skinparam classAttributeIconSize 0 command :
+
 <uml t="classes_006">
 skinparam classAttributeIconSize 0
 class Dummy {
@@ -117,26 +116,27 @@ class Dummy {
  ~method1()
  +method2()
 }
-
 </uml>
-		
+
 ======Abstract and Static======
 You can define static or abstract methods or fields using the {static} or
 {abstract} modifier.
 These modifiers can be used at the start or at the end of the line. You can
 also use {classifier} instead of {static}.
+
 <uml t="classes_007">
 class Dummy {
   {static} String id
   {abstract} void methods()
 }
 </uml>
-		
+
 ======Advanced class body======
 By default, methods and fields are automatically regrouped by PlantUML. You can
 use separators to define your own way of ordering fields and methods. The
-following separators are possible : -- .. == __.
+following separators are possible: **%%--%%** **%%..%%** **%%==%%** **%%__%%**.
 You can also use titles within the separators:
+
 <uml t="classes_008">
 class Foo1 {
   You can use
@@ -164,17 +164,16 @@ class User {
   -- encrypted --
   String password
 }
-
 </uml>
-		
+
 ======Notes and stereotypes======
 Stereotypes are defined with the class keyword, " << " and " >> ".
 You can also define notes using note left of , note right of , note top of ,
 note bottom of keywords.
 You can also define a note on the last defined class using note left, note
 right, note top, note bottom.
-A note can be also define alone with the note keywords, then linked to other
-objects using the .. symbol.
+A note can be also define alone with the note keywords, then linked to other objects using the .. symbol.
+
 <uml t="classes_009">
 class Object << general >>
 Object <|--- ArrayList
@@ -189,23 +188,21 @@ N2 .. ArrayList
 class Foo
 note left: On last defined class
 </uml>
-		
+
 ======More on notes======
 It is also possible to use few html tags like :
-    * <b>
-    * <u>
-    * <i>
-    * <s>, <del>, <strike>
-    * <font color="#AAAAAA"> or <font color="colorName">
-    * <color:#AAAAAA> or <color:colorName>
-    * <size:nn> to change font size
-    * <img src="file"> or <img:file> : the file must be accessible by the
-      filesystem
+  * <b>
+  * <u>
+  * <i>
+  * <s>, <del>, <strike>
+  * <font color="#AAAAAA"> or <font color="colorName">
+  * <color:#AAAAAA> or <color:colorName>
+  * <size:nn> to change font size
+  * <img src="file"> or <img:file> : the file must be accessible by the filesystem
 You can also have a note on several lines
-You can also define a note on the last defined class using note left, note
-right, note top, note bottom.
-<uml t="classes_010">
+You can also define a note on the last defined class using note left, note right, note top, note bottom.
 
+<uml t="classes_010">
 class Foo
 note left: On last defined class
 
@@ -221,17 +218,15 @@ note as N1
   <s>words</s> lines
   And this is hosted by <img:sourceforge.jpg>
 end note
-
 </uml>
-		
-======Note on links======
-It is possible to add a note on a link, just after the link definition, using
-note on link.
-You can also use note left on link, note right on link, note top on link, note
-bottom on link if you want to change the relative position of the note with the
-label.
-<uml t="classes_011">
 
+======Note on links======
+It is possible to add a note on a link, just after the link definition, using note on link.
+
+You can also use note left on link, note right on link, note top on link, note
+bottom on link if you want to change the relative position of the note with the label.
+
+<uml t="classes_011">
 class Dummy
 Dummy --> Foo : A link
 note on link #red: note that is red
@@ -241,16 +236,15 @@ note right on link #blue
 	this is my note on right link
 	and in blue
 end note
-
 </uml>
-		
+
 ======Abstract class and interface======
-You can declare a class as abstract using "abstract" or "abstract class"
-keywords.
+You can declare a class as abstract using "abstract" or "abstract class" keywords.
+
 The class will be printed in italic.
 You can use the interface, annotation and enum keywords too.
-<uml t="classes_012">
 
+<uml t="classes_012">
 abstract class AbstractList
 abstract AbstractCollection
 interface List
@@ -275,42 +269,40 @@ enum TimeUnit {
 }
 
 annotation SuppressWarnings
-
 </uml>
-		
+
 ======Using non-letters======
-If you want to use non-letters in the class (or enum...) display, you can
-either :
-    * Use the as keyword in the class definition
-    * Put quotes "" around the class name
+If you want to use non-letters in the class (or enum...) display, you can either:
+  * Use the as keyword in the class definition
+  * Put quotes "" around the class name
 <uml t="classes_013">
 class "This is my class" as class1
 class class2 as "It works this way too"
 
 class2 *-- "foo/dummy" : use
 </uml>
-		
+
 ======Hide attributes, methods...=====
 You can parameterize the display of classes using the hide/show command.
-The basic command is: hide empty members. This command will hide attributes or
-methods if they are empty.
-Instead of empty members, you can use:
-    * empty fields or empty attributes for empty fields,
-    * empty methods for empty methods,
-    * fields or attributes which will hide fields, even if they are described,
-    * methods which will hide methods, even if they are described,
-    * members which will hide fields and methods, even if they are described,
-    * circle for the circled character in front of class name,
-    * stereotype for the stereotype.
-You can also provide, just after the hide or show keyword:
-    * class for all classes,
-    * interface for all interfaces,
-    * enum for all enums,
-    * <<foo1>> for classes which are stereotyped with foo1,
-    * an existing class name.
-You can use several show/hide commands to define rules and exceptions.
-<uml t="classes_014">
+The basic command is: hide empty members. This command will hide attributes or methods if they are empty.
 
+Instead of empty members, you can use:
+  * empty fields or empty attributes for empty fields,
+  * empty methods for empty methods,
+  * fields or attributes which will hide fields, even if they are described,
+  * methods which will hide methods, even if they are described,
+  * members which will hide fields and methods, even if they are described,
+  * circle for the circled character in front of class name,
+  * stereotype for the stereotype.
+You can also provide, just after the hide or show keyword:
+  * class for all classes,
+  * interface for all interfaces,
+  * enum for all enums,
+  * <<foo1>> for classes which are stereotyped with foo1,
+  * an existing class name.
+You can use several show/hide commands to define rules and exceptions.
+
+<uml t="classes_014">
 class Dummy1 {
   +myMethods()
 }
@@ -327,52 +319,48 @@ hide members
 hide <<Serializable>> circle
 show Dummy1 methods
 show <<Serializable>> fields
-
 </uml>
-		
+
 ======Hide classes======
 You can also use the show/hide commands to hide classes.
-This may be useful if you define a large !included_file, and if you want to
-hide come classes after file_inclusion.
-<uml t="classes_015">
+This may be useful if you define a large !included_file, and if you want to hide come classes after file_inclusion.
 
+<uml t="classes_015">
 class Foo1
 class Foo2
 
 Foo2 *-- Foo1
 
 hide Foo2
-
 </uml>
-		
+
 ======Use generics======
 You can also use bracket < and > to define generics usage in a class.
-<uml t="classes_016">
 
+<uml t="classes_016">
 class Foo<? extends Element> {
   int size()
 }
 Foo *- Element
-
 </uml>
-		
+
 ======Specific Spot======
 Usually, a spotted character (C, I, E or A) is used for classes, interface,
 enum and abstract classes.
 But you can define your own spot for a class when you define the stereotype,
 adding a single character and a color, like in this example:
-<uml t="classes_017">
 
+<uml t="classes_017">
 class System << (S,#FF7700) Singleton >>
 class Date << (D,orchid) >>
 </uml>
-		
+
 ======Packages======
 You can define a package using the package keyword, and optionally declare a
 background color for your package (Using a html color code or name).
 Note that package definitions can be nested.
-<uml t="classes_018">
 
+<uml t="classes_018">
 package "Classic Collections" #DDDDDD {
   Object <|-- ArrayList
 }
@@ -381,13 +369,13 @@ package net.sourceforge.plantuml {
   Object <|-- Demo1
   Demo1 *- Demo2
 }
-
 </uml>
-		
+
 ======Packages style======
 There are different styles available for packages.
 You can specify them either by setting a default style with the command :
 skinparam packageStyle, or by using a stereotype on the package:
+
 <uml t="classes_019">
 package foo1 <<Node>> {
   class Class1
@@ -412,13 +400,11 @@ package foo5 <<Cloud>> {
 package foo6 <<Database>> {
   class Class6
 }
-
 </uml>
-		
 
 You can also define links between packages, like in the following example:
-<uml t="classes_020">
 
+<uml t="classes_020">
 skinparam packageStyle rect
 
 package foo1.foo2 {
@@ -429,20 +415,19 @@ package foo1.foo2.foo3 {
 }
 
 foo1.foo2 +-- foo1.foo2.foo3
-
 </uml>
-		
+
 ======Namespaces======
 In packages, the name of a class is the unique identifier of this class. It
-means that you cannot have two classes with the very same name in different
-packages.
+means that you cannot have two classes with the very same name in different packages.
+
 In that case, you should use namespaces instead of packages.
 You can refer to classes from other namespaces by fully qualify them. Classes
 from the default namespace are qualified with a starting dot.
-Note that you don't have to explicitly create namespace : a fully qualified
+Note that you don't have to explicitly create namespace: a fully qualified
 class is automatically put in the right namespace.
-<uml t="classes_021">
 
+<uml t="classes_021">
 class BaseClass
 
 namespace net.dummy #DDDDDD {
@@ -460,72 +445,72 @@ namespace net.foo {
 }
 
 BaseClass <|-- net.unused.Person
-
 </uml>
-		
-======Automatic namespace creation======
-You can define another separator (other than the dot) using the command : set
-namespaceSeparator ???.
-<uml t="classes_022">
 
+======Automatic namespace creation======
+You can define another separator (other than the dot) using the command: ''set namespaceSeparator ???''.
+
+<uml t="classes_022">
 set namespaceSeparator ::
 class X1::X2::foo {
   some info
 }
-
 </uml>
-		
-You can disable automatic package creation using the command set
-namespaceSeparator none.
+
+You can disable automatic package creation using the command ''set namespaceSeparator none''.
 <uml t="classes_023">
 
 set namespaceSeparator none
 class X1.X2.foo {
   some info
 }
-
 </uml>
-		
+
 ======Lollipop interface======
 You can also define lollipops interface on classes, using the following syntax:
-    * bar ()- foo
-    * bar ()-- foo
-    * foo -() bar
+  * bar ()- foo
+  * bar ()-- foo
+  * foo -() bar
 <uml t="classes_024">
 class foo
 bar ()- foo
 </uml>
+
 ======Changing arrows direction======
 By default, links between classes have two dashes -- and are vertically
-oriented. It is possible to use horizontal link by putting a single dash (or
-dot) like this:
+oriented. It is possible to use horizontal link by putting a single dash (or dot) like this:
+
 <uml t="classes_025">
 Room o- Student
 Room *-- Chair
 </uml>
+
 You can also change directions by reversing the link:
+
 <uml t="classes_026">
 Student -o Room
 Chair --* Room
 </uml>
+
 It is also possible to change arrow direction by adding left, right, up or down
 keywords inside the arrow:
+
 <uml t="classes_027">
 foo -left-> dummyLeft
 foo -right-> dummyRight
 foo -up-> dummyUp
 foo -down-> dummyDown
 </uml>
+
 You can shorten the arrow by using only the first character of the direction
 (for example, -d- instead of -down-) or the two first characters (-do-).
-Please note that you should not abuse this functionality : Graphviz gives
+Please note that you should not abuse this functionality: Graphviz gives
 usually good results without tweaking.
 ======Title the diagram======
 The title keyword is used to put a title.
-You can use title and end title keywords for a longer title, as in sequence
-diagrams.
-<uml t="classes_028">
+You can use title and end title keywords for a longer title, as in sequence diagrams.
 
+<uml t="classes_028">
 title Simple <b>example</b>\nof title
 Object <|-- ArrayList
 
@@ -542,11 +527,12 @@ legend right
   <b>Object</b> and <b>ArrayList</b>
   are simple class
 endlegend
-
 </uml>
+
 ======Association classes======
 You can define association class after that a relation has been defined between
 two classes, like in this example:
+
 <uml t="classes_030">
 class Student {
   Name
@@ -572,14 +558,14 @@ class Enrollment {
   cancel()
 }
 </uml>
+
 ======Skinparam======
 You can use the skinparam command to change colors and fonts for the drawing.
 You can use this command :
-    * In the diagram definition, like any other commands,
-    * In an included_file,
-    * In a configuration file, provided in the command_line or the ANT_task.
+  * In the diagram definition, like any other commands,
+  * In an included_file,
+  * In a configuration file, provided in the command_line or the ANT_task.
 <uml t="classes_032">
-
 skinparam class {
 	BackgroundColor PaleGreen
 	ArrowColor SeaGreen
@@ -590,13 +576,12 @@ skinparam stereotypeCBackgroundColor YellowGreen
 Class01 "1" *-- "many" Class02 : contains
 
 Class03 o-- Class04 : aggregation
-
 </uml>
-		
+
 ======Skinned Stereotypes======
 You can define specific color and fonts for stereotyped classes.
-<uml t="classes_033">
 
+<uml t="classes_033">
 skinparam class {
 	BackgroundColor PaleGreen
 	ArrowColor SeaGreen
@@ -611,22 +596,20 @@ Class01 << Foo >>
 Class01 "1" *-- "many" Class02 : contains
 
 Class03<<Foo>> o-- Class04 : aggregation
-
 </uml>
-		
+
 ======Color gradient======
-It's possible to declare individual color for classes or note using the #
-notation.
+It's possible to declare individual color for classes or note using the # notation.
 You can use either standard_color_name or RGB code.
 You can also use color gradient in background, with the following syntax: two
 colors names separated either by:
-    * |,
-    * /,
-    * \,
-    * or -
+  * |,
+  * /,
+  * \,
+  * or -
 depending the direction of the gradient. For example, you could have:
-<uml t="classes_034">
 
+<uml t="classes_034">
 skinparam backgroundcolor AntiqueWhite/Gold
 skinparam classBackgroundColor Wheat|CornflowerBlue
 
@@ -639,15 +622,15 @@ note left of Foo #blue\9932CC {
 package example #GreenYellow/LightGoldenRodYellow {
   class Dummy
 }
-
 </uml>
-		
+
 ======Splitting large files======
 Sometimes, you will get some very large image files.
 You can use the "page (hpages)x(vpages)" command to split the generated image
 into several files :
 hpages is a number that indicated the number of horizontal pages, and vpages is
 a number that indicated the number of vertical pages.
+
 <uml t="splitting">
 ' Split into 4 pages
 ' page 2x2
